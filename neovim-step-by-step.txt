@@ -1,0 +1,50 @@
+neovim step-by-step
+
+sudo apt install neovim
+
+mkdir ~/.config/nvim
+
+~/.config/nvim $ nvim init.vim
+
+install vim_plug:
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+       
+install Plugin plugins
+
+https://github.com/junegunn/vim-plug?tab=readme-ov-file
+
+add the plugin to init.vim
+
+e.g:
+  Plug 'https://github.com/vim-airline/vim-airline'
+  
+type:
+
+:PlugInstall
+
+problems:
+
+Tagbar problem:
+	Tagbar: Exuberant ctags not found!
+	Please download Exuberant Ctags from ctags.sourceforge.net and install it in a directory in your $PATH or set g:tagbar_ctags_b
+	in.
+
+	solution:
+	sudo apt install exuberant-ctags
+
+plugged dir problem:
+	plugged dir not found
+	
+	solution:
+	I had a weird situation where I didn't have the nvim/plugged directory. 
+I fixed it by adding path to `call plug#begin()` making it into `call plug#begin('~/.config/nvim/plugged')`
+
+installing coc for auto-completion:
+
+languages:
+https://github.com/neoclide/coc.nvim/wiki/Language-servers
+
+java:
+https://github.com/neoclide/coc-java
